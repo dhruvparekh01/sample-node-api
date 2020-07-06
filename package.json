@@ -1,0 +1,30 @@
+{
+  "name": "split",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "express-promise-router": "^4.0.1",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.21"
+  },
+  "devDependencies": {
+    "eslint": "^7.4.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^2.0.4"
+  }
+}
