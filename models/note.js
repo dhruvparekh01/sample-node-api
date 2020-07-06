@@ -9,5 +9,4 @@ const noteSchema = mongoose.Schema({
 });
 
 const Note = mongoose.model('Note', noteSchema);
-console.log(Note);
 module.exports = Note;
