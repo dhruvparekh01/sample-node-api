@@ -7,6 +7,7 @@ exports.RegisterUser = function(req, res) {
     var passwordConfirm = req.body.passwordConfirm;
 
     if (password !== passwordConfirm) {
+        res.status(401)
         res.send({ "error": "Passwords do not match" });
     }
 
@@ -26,7 +27,8 @@ exports.RegisterUser = function(req, res) {
         (err, _account) => {
             // Show registration form with errors if fail.
             if (err) {
-                res.send({ errorMessage: err });
+                res.status(400)
+                return res.send({ errorMessage: err });
             }
 
             passport.authenticate('local', { session: false }) (req, res, () => {
@@ -41,3 +43,11 @@ exports.Logout = (req, res) => {
     req.logout();
     res.send({"success": "ok"});
 };
+
+exports.LoginStatus = (req, res) => {
+    if (req.user) {
+        return res.send(true);
+    } else {
+        return res.send(false);
+    }
+}
