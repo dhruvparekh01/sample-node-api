@@ -1,7 +1,7 @@
 const passport    = require('passport')
 const JWT         = require('jsonwebtoken')
 const PassportJwt = require('passport-jwt')
-const User        = require('./models/User');
+const User        = require('./models/user');
 
 // Configure the token.
 const jwtSecret = process.env.JWT_SECRET;

@@ -1,7 +1,8 @@
 const Note = require('../models/note');
 
 function getAll(req, res) {
-    Note.find({}, (err, notes) => {
+    const curUser = req.user._id;
+    Note.find({userId: curUser}, (err, notes) => {
         if (err)
             res.send(err);
         res.send(notes);
@@ -9,8 +10,9 @@ function getAll(req, res) {
 }
 
 async function postOne(req, res) {
-    const reqBody = req.body;
-    const note = new Note(reqBody);
+    const newNote = req.body;
+    newNote.userId = req.user._id;
+    const note = new Note(newNote);
     try {
         await note.save();
         res.send(note);
@@ -21,26 +23,32 @@ async function postOne(req, res) {
 
 function getOne(req, res) {
     const id = req.params.id;
-    Note.findById(id, (err, note) => {
+    const curUser = req.user._id;
+
+    Note.findOne({userId: curUser, _id: id}, (err, note) => {
         if (err)
-            res.send(err);
-        res.send(note);
-    });
+            return res.send(err);
+        return res.send(note);
+    })
 }
 
 function deleteOne(req, res) {
     const id = req.params.id;
-    Note.remove({'_id': id}, err => {
+    const curUser = req.user._id;
+
+    Note.remove({'_id': id, userId: curUser}, err => {
         if (err)
-            res.send(err);
+            return res.send(err);
         res.send({'status': 'ok'});
     })
 }
 
 function updateOne(req, res) {
     const id = req.params.id;
+    const curUser = req.user._id;
     const newNote = req.body;
-    Note.findByIdAndUpdate(id, newNote, { new: true }, (err, note) => {
+    newNote.userId = curUser;
+    Note.findOneAndUpdate({_id: id, userId: curUser}, newNote, { new: true }, (err, note) => {
         if (err)
             res.send(err);
         res.send(note);
