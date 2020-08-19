@@ -2,7 +2,7 @@ const express     = require('express');
 const bodyParser  = require('body-parser');
 const mongoose    = require('mongoose');
 const passport    = require('passport');
-const User        = require('./models/User');
+const User        = require('./models/user');
 const cors        = require('cors');
 var LocalStrategy = require('passport-local').Strategy;
 
