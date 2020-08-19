@@ -1,6 +1,6 @@
 const Router         = require('express-promise-router');
 const router         = Router();
-const userController = require('../controllers/UserController');
+const userController = require('../controllers/userController');
 const authHelper     = require('../authHelper');
 
 router.post('/register', userController.RegisterUser);
