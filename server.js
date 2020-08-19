@@ -45,7 +45,7 @@ passport.deserializeUser(User.deserializeUser());
 const router = require('./routes/index')
 app.use('', router);
 
-const port = process.env.port || 8000;
+const port = process.env.port || 8081;
 app.listen(port, () => {
     console.log("Listening on port " + port);
 });
