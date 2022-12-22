@@ -17,7 +17,7 @@
     "express-promise-router": "^4.0.1",
     "express-session": "^1.17.1",
     "express-sessions": "^1.0.6",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongodb": "^3.5.9",
     "mongoose": "^5.9.21",
     "passport": "^0.4.1",
